@@ -1,7 +1,7 @@
 import logging
 import sys
-from types import FrameType
 import typing as tp
+from types import FrameType
 
 from loguru import logger
 from pydantic import AnyHttpUrl, BaseSettings
@@ -10,8 +10,9 @@ from pydantic import AnyHttpUrl, BaseSettings
 class LoggingSettings(BaseSettings):
     LOGGING_LEVEL: int = logging.INFO
 
+
 class Settings(BaseSettings):
-    API_V1_STR: str= "/api/v1"
+    API_V1_STR: str = "/api/v1"
 
     logging: LoggingSettings = LoggingSettings()
 
@@ -26,7 +27,8 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Lending Club API"
 
     class Config:
-        case_sensitive=True
+        case_sensitive = True
+
 
 # See: https://loguru.readthedocs.io/en/stable/overview.html#entirely-compatible-with-standard-logging  # noqa
 class InterceptHandler(logging.Handler):
@@ -47,6 +49,7 @@ class InterceptHandler(logging.Handler):
             level,
             record.getMessage(),
         )
+
 
 def setup_app_logging(config: Settings) -> None:
     """Prepare custom logging for our application."""

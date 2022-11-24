@@ -1,7 +1,7 @@
 from typing import Any, List, Optional
 
-from pydantic import BaseModel
 from classification_model.processing.validate import LendingDataSchema
+from pydantic import BaseModel
 
 
 class PredictionResults(BaseModel):
