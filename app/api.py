@@ -7,7 +7,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.encoders import jsonable_encoder
 from loguru import logger
 from classification_model import __version__ as model_version
-from classification_model.predict import make_prediction
+from classification_model.predict import make_predictions
 
 from app import __version__, schemas
 from app.config import settings
@@ -28,7 +28,7 @@ def health() -> dict:
 
 
 @api_router.post("/predict", response_model=schemas.PredictionResults, status_code=200)
-async def predict(input_data: schemas.MultipleHouseDataInputs) -> tp.Any:
+async def predict(input_data: schemas.MultipleLendingDataInputs) -> tp.Any:
     """
     Make house price predictions with the TID regression model
     """
@@ -38,12 +38,12 @@ async def predict(input_data: schemas.MultipleHouseDataInputs) -> tp.Any:
     # Advanced: You can improve performance of your API by rewriting the
     # `make prediction` function to be async and using await here.
     logger.info(f"Making prediction on inputs: {input_data.inputs}")
-    results = make_prediction(input_data=input_df.replace({np.nan: None}))
+    results = make_predictions(input_data=input_df.replace({np.nan: None}))
 
     if results["errors"] is not None:
         logger.warning(f"Prediction validation error: {results.get('errors')}")
         raise HTTPException(status_code=400, detail=json.loads(results["errors"]))
 
-    logger.info(f"Prediction results: {results.get('predictions')}")
+    logger.info(f"Prediction results: {results.get('default_probability')}")
 
     return results
