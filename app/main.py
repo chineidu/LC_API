@@ -11,7 +11,7 @@ from app.config import settings, setup_app_logging
 # Setup logging
 setup_app_logging(config=settings)
 
-description = """This is used to make predictions 
+description = """This is used to make predictions
 (probability of default and default status) using the lending data.
 """
 
@@ -63,6 +63,6 @@ if __name__ == "__main__":
 
     # Use this for debugging purposes only
     logger.warning("Running in development mode. Do not run like this in production.")
-    
+
     # Run the server
     uvicorn.run(app, host=host, port=port, log_level="debug")

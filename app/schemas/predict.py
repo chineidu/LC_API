@@ -18,6 +18,7 @@ class MultipleLendingDataInputs(BaseModel):
 
     class Config:
         """Sample Payload"""
+
         schema_extra = {
             "example": {
                 "inputs": [

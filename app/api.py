@@ -9,7 +9,8 @@ from fastapi import APIRouter, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from loguru import logger
 
-from app import __version__ as api_version, schemas
+from app import __version__ as api_version
+from app import schemas
 from app.config import settings
 
 api_router = APIRouter()
@@ -33,19 +34,21 @@ def api_details() -> tp.Dict:
 
 
 @api_router.post(
-    "/predict/", response_model=schemas.PredictionResults, status_code=status.HTTP_200_OK
+    "/predict/",
+    response_model=schemas.PredictionResults,
+    status_code=status.HTTP_200_OK,
 )
 async def predict(input_data: schemas.MultipleLendingDataInputs) -> tp.Any:
     """
     This endpoint is used to make predictions on the probability of default
-    and default rate using the Lending Club Data. 
+    and default rate using the Lending Club Data.
     """
     # Convert the MultipleLendingDataInputs object to Dict
     input_df = pd.DataFrame(jsonable_encoder(input_data.inputs))
     logger.info(f"Making prediction on inputs: {input_data.inputs}")
     # Make predictions using the custom Classification Model
     results = make_predictions(input_data=input_df.replace({np.nan: None}))
-    
+
     # Check for errors
     if results["errors"] is not None:
         logger.warning(f"Prediction validation error: {results.get('errors')}")
