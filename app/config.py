@@ -13,7 +13,8 @@ class LoggingSettings(BaseSettings):
 
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
-
+    API_FULL_VERSION: str = "1.0.0"
+    PROJECT_NAME: str = "Lending Club API"
     logging: LoggingSettings = LoggingSettings()
 
     # BACKEND_CORS_ORIGINS is a comma-separated list of origins
@@ -24,12 +25,11 @@ class Settings(BaseSettings):
         "https://localhost:8000",  # type: ignore
     ]
 
-    PROJECT_NAME: str = "Lending Club API"
-
     class Config:
         case_sensitive = True
 
 
+# This is the config for handling the logs. (Copied)
 # See: https://loguru.readthedocs.io/en/stable/overview.html#entirely-compatible-with-standard-logging  # noqa
 class InterceptHandler(logging.Handler):
     def emit(self, record: logging.LogRecord) -> None:  # pragma: no cover
@@ -52,7 +52,7 @@ class InterceptHandler(logging.Handler):
 
 
 def setup_app_logging(config: Settings) -> None:
-    """Prepare custom logging for our application."""
+    """THis is used to prepare custom logging for the app."""
 
     LOGGERS = ("uvicorn.asgi", "uvicorn.access")
     logging.getLogger().handlers = [InterceptHandler()]
@@ -65,4 +65,5 @@ def setup_app_logging(config: Settings) -> None:
     )
 
 
+# Create an instance
 settings = Settings()

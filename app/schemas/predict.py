@@ -1,20 +1,23 @@
-from typing import Any, List, Optional
+import typing as tp
 
 from classification_model.processing.validate import LendingDataSchema
 from pydantic import BaseModel
 
 
 class PredictionResults(BaseModel):
-    default_probability: Optional[List[float]]
-    default_status: Optional[List[str]]
+    """Schema for the predicted results."""
+
+    default_probability: tp.Optional[tp.List[float]]
+    default_status: tp.Optional[tp.List[str]]
     model_version: str
-    errors: Optional[Any]
+    errors: tp.Optional[tp.Any]
 
 
 class MultipleLendingDataInputs(BaseModel):
-    inputs: List[LendingDataSchema]
+    inputs: tp.List[LendingDataSchema]
 
     class Config:
+        """Sample Payload"""
         schema_extra = {
             "example": {
                 "inputs": [

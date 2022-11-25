@@ -1,2 +1,2 @@
-from .health import Health
+from .api_details import APIDetails
 from .predict import MultipleLendingDataInputs, PredictionResults
