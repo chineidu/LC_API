@@ -8,13 +8,13 @@ prepare_venv: &prepare_venv
     command: |
       python3 -m venv venv
       source venv/bin/activate
-      pip install --upgrade pip
+      python3 -m pip install --upgrade pip
+      
 prepare_tox: &prepare_tox
   run:
     name: Install tox
     command: |
-      python -m pip install --upgrade pip
-      python -m pip install --user tox
+      python3 -m pip install --user tox
 
 
 jobs:
