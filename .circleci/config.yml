@@ -14,8 +14,8 @@ prepare_tox: &prepare_tox
     name: Install tox
     command: |
       sudo pip install --upgrade pip
-      pip install -U setuptools
-      pip install --user tox
+      sudo pip install -U setuptools
+      sudo pip install --user tox
 
 
 
