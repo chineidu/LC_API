@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  python: circleci/python@2.0.3
 
 prepare_venv: &prepare_venv
   run:
@@ -23,6 +21,7 @@ jobs:
     executor: python/default
     steps:
       - checkout
+      - *prepare_venv
       - *prepare_tox
       -  run:
             name: Runnning app tests
