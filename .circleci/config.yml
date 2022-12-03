@@ -13,10 +13,8 @@ prepare_tox: &prepare_tox
   run:
     name: Install tox
     command: |
-      sudo pip install --upgrade pip
-      sudo pip install -U setuptools
-      sudo pip install --user tox
-
+      python -m pip install --upgrade pip
+      python -m pip install --user tox
 
 
 jobs:
