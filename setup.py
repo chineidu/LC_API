@@ -9,9 +9,9 @@ with open(Path(BASE_DIR, "requirements.txt")) as file:
 
 dev_packages = ["pre-commit==2.19.0", "pydantic==1.10.6"]
 
-style_packages = ["black==22.3.0", "isort==5.10.1", "pylint==2.15.10"]
+style_packages = ["black==22.3.0", "isort==5.10.1", "pylint==2.15.10", "mypy==1.1.1"]
 
-test_packages = ["pytest==7.1.2", "pytest-cov==2.10.1"]
+test_packages = ["pytest==7.2.0", "pytest-cov==2.10.1"]
 
 # Define our package
 setup(
