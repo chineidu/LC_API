@@ -52,3 +52,4 @@ warn_redundant_casts = true
 warn_unused_configs = true
 strict_optional = true
 disallow_any_generics = true
+show_error_codes = true

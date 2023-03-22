@@ -11,7 +11,7 @@ from loguru import logger
 
 from app import __version__ as api_version
 from app import schemas
-from app.config import settings
+from app.config import settings  # type: ignore [attr-defined]
 
 api_router = APIRouter()
 

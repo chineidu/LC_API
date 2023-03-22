@@ -8,6 +8,7 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: debug-statements
+      - id: check-merge-conflict
       - id: name-tests-test
       - id: check-added-large-files
         args: ["--maxkb=2000"]
@@ -32,6 +33,7 @@ repos:
         entry: pylint
         language: system
         types: [python]
+        verbose: true
         args: [
             "-rn", # Only display messages
             "-sn", # Don't display the score
@@ -43,8 +45,7 @@ repos:
     rev: v1.1.1
     hooks:
       - id: mypy
-        name: mypy
-        entry: mypy
+        additional_dependencies: [types-python-dateutil]
         language: python
         "types_or": [python, pyi]
         verbose: true
