@@ -19,10 +19,10 @@ class Settings(BaseSettings):
 
     # BACKEND_CORS_ORIGINS is a comma-separated list of origins
     BACKEND_CORS_ORIGINS: tp.List[AnyHttpUrl] = [
-        "http://localhost:3000",  # type: ignore
-        "http://localhost:8000",  # type: ignore
-        "https://localhost:3000",  # type: ignore
-        "https://localhost:8000",  # type: ignore
+        "http://localhost:3000",
+        "http://localhost:8000",
+        "https://localhost:3000",
+        "https://localhost:8000",
     ]
 
     class Config:
@@ -42,7 +42,7 @@ class InterceptHandler(logging.Handler):
         # Find caller from where originated the logged message
         frame, depth = logging.currentframe(), 2
         while frame.f_code.co_filename == logging.__file__:  # noqa: WPS609
-            frame = tp.cast(FrameType, frame.f_back)
+            frame = tp.cast(FrameType, frame.f_back)  # type: ignore
             depth += 1
 
         logger.opt(depth=depth, exception=record.exc_info).log(
@@ -60,9 +60,7 @@ def setup_app_logging(config: Settings) -> None:
         logging_logger = logging.getLogger(logger_name)
         logging_logger.handlers = [InterceptHandler(level=config.logging.LOGGING_LEVEL)]
 
-    logger.configure(
-        handlers=[{"sink": sys.stderr, "level": config.logging.LOGGING_LEVEL}]
-    )
+    logger.configure(handlers=[{"sink": sys.stderr, "level": config.logging.LOGGING_LEVEL}])
 
 
 # Create an instance

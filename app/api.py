@@ -16,10 +16,8 @@ from app.config import settings
 api_router = APIRouter()
 
 
-@api_router.get(
-    "/api-details/", response_model=schemas.APIDetails, status_code=status.HTTP_200_OK
-)
-def api_details() -> tp.Dict:
+@api_router.get("/health/", response_model=schemas.APIDetails, status_code=status.HTTP_200_OK)
+def health() -> tp.Dict:
     """
     This endpoint is used to get the API details. It returns info like:
     project_name, api_version and model_version
