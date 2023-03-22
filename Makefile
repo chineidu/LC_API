@@ -1,4 +1,4 @@
-.PHONY: setup_venv run_app run_lint run_style run_test run_checks
+.PHONY: help setup_venv run_app run_lint run_style run_test run_checks
 
 help:
 	@echo "Commands:"

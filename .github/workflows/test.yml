@@ -2,27 +2,23 @@ name: Tests
 
 on:
   push:
-    branches: [ "main", "staging" ]
+    branches: ["main", "staging"]
   pull_request:
-    branches: [ "main", "staging" ]
+    branches: ["main", "staging"]
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        python-version: ['3.10']
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install tox tox-gh-actions
-    - name: Test with tox
-      run: tox
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          make setup_venv
+      - name: Run Tests and Code Quality Checks
+        run: |
+          make run_checks
