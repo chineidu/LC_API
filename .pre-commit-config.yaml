@@ -52,8 +52,7 @@ repos:
         exclude: ^tests/
         args:
           [
-            # "--no-strict-optional",
-            # "--ignore-missing-imports",
+           "--explicit-package-bases",
             "--config-file",
             "./pyproject.toml",
           ]
