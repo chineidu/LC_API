@@ -47,12 +47,12 @@ repos:
         entry: mypy
         language: python
         "types_or": [python, pyi]
+        verbose: true
         exclude: ^tests/
         args:
           [
-            "--no-strict-optional",
-            "--ignore-missing-imports",
-            "--explicit-package-bases",
-            "--warn-unused-ignores",
-            "--show-error-codes",
+            # "--no-strict-optional",
+            # "--ignore-missing-imports",
+            "--config-file",
+            "./pyproject.toml",
           ]

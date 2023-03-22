@@ -1,4 +1,3 @@
-# mypy: ignore
 import logging
 import sys
 import typing as tp
@@ -20,10 +19,10 @@ class Settings(BaseSettings):
 
     # BACKEND_CORS_ORIGINS is a comma-separated list of origins
     BACKEND_CORS_ORIGINS: tp.List[AnyHttpUrl] = [
-        "http://localhost:3000",  # type: ignore
-        "http://localhost:8000",  # type: ignore
-        "https://localhost:3000",  # type: ignore
-        "https://localhost:8000",  # type: ignore
+        # "http://localhost:3000",  # type: ignore
+        # "http://localhost:8000",  # type: ignore
+        # "https://localhost:3000",  # type: ignore
+        # "https://localhost:8000",  # type: ignore
     ]
 
     class Config:
