@@ -39,20 +39,20 @@ repos:
             "--rcfile=pyproject.toml", # Link to your config file
           ]
 
-  # - repo: https://github.com/pre-commit/mirrors-mypy
-  #   rev: v1.1.1
-  #   hooks:
-  #     - id: mypy
-  #       name: mypy
-  #       entry: mypy
-  #       language: python
-  #       "types_or": [python, pyi]
-  #       exclude: ^tests/
-  #       args:
-  #         [
-  #           "--no-strict-optional",
-  #           "--ignore-missing-imports",
-  #           "--explicit-package-bases",
-  #           "--warn-unused-ignores",
-  #           "--show-error-codes",
-  #         ]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.1.1
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: python
+        "types_or": [python, pyi]
+        exclude: ^tests/
+        args:
+          [
+            "--no-strict-optional",
+            "--ignore-missing-imports",
+            "--explicit-package-bases",
+            "--warn-unused-ignores",
+            "--show-error-codes",
+          ]
