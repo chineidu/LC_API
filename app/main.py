@@ -58,11 +58,10 @@ if settings.BACKEND_CORS_ORIGINS:
 if __name__ == "__main__":
     import uvicorn
 
-    host = "localhost"
-    port = 8005
+    port, host = 8001, "0.0.0.0"
 
     # Use this for debugging purposes only
     logger.warning("Running in development mode. Do not run like this in production.")
 
     # Run the server
-    uvicorn.run(app, host=host, port=port, log_level="debug")
+    uvicorn.run("main:app", host=host, port=port, log_level="debug")

@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+  lc_api:
+    image: "lc_image:v2"
+    ports:
+      - "8001:8001"
