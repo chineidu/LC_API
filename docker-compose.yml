@@ -5,3 +5,5 @@ services:
     image: "lc_image:v2"
     ports:
       - "8001:8001"
+    volumes:
+      - .:/opt
