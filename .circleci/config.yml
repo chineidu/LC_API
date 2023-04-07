@@ -12,13 +12,18 @@ prepare_venv: &prepare_venv
       python3 -m pip install --upgrade pip
       python3 -m pip install -e ".[dev]"
 
-test: &code_test
+test: &run_pytest
   run:
     name: Pytest
     command: |
       pytest -svv
+
+style_test: &style_test
+  run:
+    name: Linting and Style Tests
+    command: |
       black app && isort app
-      pylint --recursive=y app && mypy app
+      pylint app && mypy app
 
 jobs:
   build_and_test:
@@ -26,7 +31,8 @@ jobs:
     steps:
       - checkout
       - *prepare_venv
-      - *code_test
+      - *run_pytest
+      - *style_test
 
 workflows:
   test_my_app:
