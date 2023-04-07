@@ -27,18 +27,37 @@ style_test: &style_test
       black app && isort app
       pylint app && mypy app
 
+deploy: &railway_deploy
+  run:
+    name: Install And Deploy API To Railway
+    command: |
+      npm i -g @railway/cli
+      railway login && railway up --detach
+
 jobs:
   build_and_test:
     executor:
       name: python/default
-      tag: '3.10' # Use Python 3.10
+      tag: "3.10" # Use Python 3.10
     steps:
       - checkout
       - *prepare_venv
       - *run_pytest
       - *style_test
+  deploy:
+    executor:
+      name: node/default
+      tag: "16.13"
+    steps:
+      - checkout
+      - node/install
+      - run: node --version
+      - *railway_deploy
 
 workflows:
-  test_my_app:
+  test_deploy:
     jobs:
       - build_and_test
+      - deploy:
+          requires:
+            - build_and_test
