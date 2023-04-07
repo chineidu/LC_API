@@ -16,12 +16,14 @@ test: &run_pytest
   run:
     name: Pytest
     command: |
+      source venv/bin/activate
       pytest -svv
 
 style_test: &style_test
   run:
     name: Linting and Style Tests
     command: |
+      source venv/bin/activate
       black app && isort app
       pylint app && mypy app
 
