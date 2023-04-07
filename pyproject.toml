@@ -6,6 +6,7 @@ disable = [
     "duplicate-code",
     "missing-final-newline",
     "missing-timeout",
+    "missing-module-docstring",
     "no-name-in-module",
     "no-value-for-parameter",
     "inconsistent-return-statements",
