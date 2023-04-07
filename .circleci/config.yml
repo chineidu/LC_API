@@ -28,6 +28,7 @@ style_test: &style_test
 jobs:
   build_and_test:
     executor: python/default
+    tag: '3.10' # Use Python 3.10
     steps:
       - checkout
       - *prepare_venv
