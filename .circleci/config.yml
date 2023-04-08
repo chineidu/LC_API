@@ -52,7 +52,7 @@ jobs:
       - checkout
       - node/install
       - run: node --version
-      - *railway_deploy
+      # - *railway_deploy
 
 workflows:
   test_deploy:
