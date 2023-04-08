@@ -2,7 +2,8 @@ version: "3.7"
 
 services:
   lc_api:
-    image: "lc_image:v2"
+    build:
+        context: .
     ports:
       - "8001:8001"
     volumes:
