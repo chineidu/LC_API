@@ -14,7 +14,7 @@ This repo contains the code for the LendingClub API
 
 ## Note
 
-- Deploy the API using `Railway App` works best without a custom docker-compose file.
+- Deploying the API using `Railway App` works best without a custom docker-compose file.
 - The files shown below are the Dockerfile and the docker-compose file that was used locally.
 
 ### Dockerfile
