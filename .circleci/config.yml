@@ -31,8 +31,8 @@ deploy: &railway_deploy
   run:
     name: Install And Deploy API To Railway
     command: |
-      npm i -g @railway/cli
-      railway up --detach
+      npm i -g @railway/cli # install using NodeJS
+      railway up --detach  # Deploy to Railway
 
 jobs:
   build_and_test:
